@@ -5,6 +5,7 @@
 
 
 
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,8 +14,10 @@ using System.Text.RegularExpressions;
 
 namespace SteamKit2
 {
+    [ProtoContract]
     class BitVector64
     {
+        [ProtoMember(1)]
         private UInt64 data;
 
         public BitVector64()
@@ -47,9 +50,12 @@ namespace SteamKit2
     /// <summary>
     /// This 64bit structure is used for identifying various objects on the Steam network.
     /// </summary>
+    ///
+    [ProtoContract]
     [DebuggerDisplay( "{Render()}, {ConvertToUInt64()}" )]
     public class SteamID
     {
+        [ProtoMember(1)]
         BitVector64 steamid;
 
         static Regex Steam2Regex = new Regex(
